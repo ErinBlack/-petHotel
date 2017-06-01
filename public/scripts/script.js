@@ -19,6 +19,8 @@ function registerOwner(){
   };
   console.log(objectToSend);
 
+
+
   $.ajax({
     type: 'POST',
     url: '/addOwner',
@@ -45,10 +47,14 @@ function ownerSelect() {
     url: '/addOwner',
     success: function(response){
     console.log('back from server with good news!', response);
+
+
     for (var i = 0; i < response.length; i++) {
-      var $option = $('<option value="' + response[i].first_name + ' ' +
-      response[i].last_name + '">' + response[i].first_name + ' ' +
-      response[i].last_name +' </option>'  );
+      var resFirstName =  response[i].first_name;
+      var resLastName =  response[i].last_name;
+      var $option = $('<option value="' + resFirstName + ' ' +
+      resLastName + '">' + resFirstName + ' ' +
+      resLastName +' </option>'  );
 
       $("#ownerSelect").append($option);
     }
@@ -57,13 +63,23 @@ function ownerSelect() {
 
 }
 
+//create object to send pet information
+var petToSend = {
+  name: $('#petName').val(),
+  color: $('#petColor').val(),
+  breed: $('#petBreed').val()
+};
 
-// function addPet(){
-//   console.log('enter pet registration');
-//   //created an object to store owner input
-//   var objectToSend = {
-//     : $('#firstName').val(),
-//     lastName: $('#lastName').val()
-//   };
-//   console.log(objectToSend);
-// }
+function addPet(){
+  console.log('enter pet registration');
+  //created an object to store owner input
+  $.ajax({
+    type: 'POST',
+    url: '/addPet',
+    data: petToSend,
+    success: function(response){
+      console.log('back from the server with pet', response);
+    }
+  });
+
+}

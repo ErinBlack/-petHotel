@@ -75,3 +75,9 @@ app.get('/addOwner', function(req, res){
   }// end else
   }); //end pool connect
 }); //end get
+
+// getting pets from client side
+app.post('/addPet', function(req,res){
+  console.log('addPet url hit');
+  res.send(200);
+});

@@ -1,0 +1,25 @@
+{
+  "name": "pethotel",
+  "version": "1.0.0",
+  "description": "New business in Uptown for dog-enthusiasts that also need to vacation without their beloved pets.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErinBlack/-petHotel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErinBlack/-petHotel/issues"
+  },
+  "homepage": "https://github.com/ErinBlack/-petHotel#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "pg": "^6.2.3"
+  }
+}

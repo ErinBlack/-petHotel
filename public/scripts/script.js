@@ -72,6 +72,7 @@ var petToSend = {
 
 function addPet(){
   console.log('enter pet registration');
+  console.log($('#ownerSelect').val().split(' '));
   //created an object to store owner input
   $.ajax({
     type: 'POST',

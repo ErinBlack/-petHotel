@@ -79,5 +79,23 @@ app.get('/addOwner', function(req, res){
 // getting pets from client side
 app.post('/addPet', function(req,res){
   console.log('addPet url hit');
-  res.send(200);
+  pool.connect( function(err, connection, done){
+    if( err ){
+      console.log(err);
+      done();
+      res.send(400);
+    }// end if
+  else {
+    console.log('connected to db');
+
+
+
+    connection.query("SELECT id FROM user_info  WHERE first_name LIKE '%erin%' AND last_name LIKE '%black%'");
+    // INSERT INTO user_info (pet_name, color, breed) VALUES ('" + req.body.name + "'  , '" + req.body.color + "', '" + req.body.breed + "' );");
+    done();
+    res.send(200);
+  }// end else
+
+  }); //end pool connect
+
 });

@@ -65,21 +65,32 @@ function ownerSelect() {
 
 //create object to send pet information
 var petToSend = {
-  name: $('#petName').val(),
-  color: $('#petColor').val(),
-  breed: $('#petBreed').val()
+
 };
+
 
 function addPet(){
   console.log('enter pet registration');
-  console.log($('#ownerSelect').val().split(' '));
+  var fullName = $('#ownerSelect').val().split(' ');
+  var firstName = fullName[0];
+  var lastName = fullName[1];
+  var namesToSend = {
+    firstName:firstName,
+    lastName:lastName,
+    name: $('#petName').val(),
+    color: $('#petColor').val(),
+    breed: $('#petBreed').val()
+  };
+
+
+  console.log(firstName);
   //created an object to store owner input
   $.ajax({
     type: 'POST',
     url: '/addPet',
-    data: petToSend,
+    data: namesToSend,
     success: function(response){
-      console.log('back from the server with pet', response);
+      console.log('back from the server with names', response);
     }
   });
 

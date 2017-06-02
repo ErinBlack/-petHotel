@@ -88,10 +88,8 @@ app.post('/addPet', function(req,res){
   else {
     console.log('connected to db');
 
-
-
-    connection.query("SELECT id FROM user_info  WHERE first_name LIKE '%erin%' AND last_name LIKE '%black%'");
-    // INSERT INTO user_info (pet_name, color, breed) VALUES ('" + req.body.name + "'  , '" + req.body.color + "', '" + req.body.breed + "' );");
+    var resultSet = connection.query("SELECT id FROM user_info  WHERE first_name LIKE '%" + req.body.firstName + "%' AND last_name LIKE '%" + req.body.lastName + "%' INSERT INTO user_info (pet_name, color, breed) VALUES ('" + req.body.name + "'  , '" + req.body.color + "', '" + req.body.breed + "' );");
+    console.log(resultSet);
     done();
     res.send(200);
   }// end else
